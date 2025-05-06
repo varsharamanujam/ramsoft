@@ -136,7 +136,7 @@ _Added screenshots of the vulnerabilities being exploited and code being fixed._
 ![SQLi before](Exercise 2\sqli_screenshot.png)
 ![SQLi after](Exercise 2\sqli_afterFix.PNG)
 ![XSS before](Exercise 2\xss_screenshot.png)
-![Xss after](Exercise 2\xxs_afterFix.PNG)
+![Xss after](Exercise 2/sqli_afterFix.PNG)
 ```
 
 ---
