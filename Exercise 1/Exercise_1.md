@@ -29,8 +29,8 @@ Based on ChatGPT guidance, here are typical findings for a domain like `rsplheal
 - No DNSSEC found (possible trust issue)
 
 #### Technology Stack (via `WhatWeb`, `Wappalyzer`):
-- Web server: Apache (or Nginx)
-- Likely PHP-based CMS or custom app
+- Web server: Vercel
+- Likely React or custom app
 - Possible use of Google Analytics, Bootstrap, jQuery
 
 #### Shodan Insight:
@@ -48,20 +48,52 @@ These could be real entry points for social engineering or vulnerability scannin
 
 ---
 
-### 4. Potential Risks Identified (via AI Analysis)
-| Category | Risk | Why It Matters |
-|---------|------|----------------|
-| Subdomains | Test/admin subdomains exposed | Often overlooked and unpatched |
-| Server headers | Apache version disclosed | Attackers can match to known CVEs |
-| TLS Settings | Older TLS versions allowed | Weak encryption prone to downgrade attacks |
-| DNS Config | No SPF/DKIM records | Susceptible to email spoofing / phishing |
+### 4. Manual OSINT Findings
+To complement the AI-generated findings, I conducted my own manual OSINT reconnaissance using freely accessible online tools and command-line utilities.
+
+#### DNS and WHOIS:
+- Used `nslookup rsplhealth.in` to confirm the domain resolves to an IP.
+- Used `whois rsplhealth.in` to view registrar, admin contact, and DNS expiry information.
+
+#### Subdomain Enumeration:
+- Searched `crt.sh` with query `%.rsplhealth.in` to find publicly known subdomains issued under SSL/TLS certificates.
+
+#### Technology Detection:
+- Used `BuiltWith` and `Wappalyzer` browser extensions to analyze tech stack.
+- Verified Next.js, React, HSTS, Tailwind CSS and vercel usage.
+
+#### SSL Configuration (via SSL Labs):
+- Performed SSL/TLS scan using [SSL Labs](https://www.ssllabs.com/ssltest/)
+- Both IPs `66.33.60.193` and `66.33.60.67` returned A+ grade
+- TLS 1.3 and 1.2 supported; TLS 1.0 and 1.1 disabled 
+- Secure cipher suites and forward secrecy enabled
+- No known SSL vulnerabilities detected (e.g., POODLE, Heartbleed)
+- HSTS enabled with long duration, OCSP stapling enabled, DNS CAA present
+
+These findings confirmed a secure SSL/TLS configuration and helped reinforce confidence in server-side encryption.
+
+#### Additional Passive Recon:
+- Accessed website directly and used `Developer Tools > Network > Headers` to examine server headers.
+- Found references to analytics (Google Analytics), fonts (Google Fonts), and older JavaScript libraries.
 
 ---
 
+
+### 5. Potential Risks Identified (via AI Analysis and Manual Verification)
+| Category | Risk | Why It Matters |
+|---------|------|----------------|
+| Subdomains | Test/admin subdomains exposed | Often overlooked and unpatched |
+| Server headers | Vercel server disclosed | Reveals platform used and can aid targeted enumeration |
+| DNS Config | No SPF/DKIM records | Susceptible to email spoofing / phishing |
+| Public Web Resources | Older JS libraries detected | May contain client-side vulnerabilities |
+
+*Note: TLS-related concerns were not found due to strong results in manual SSL Labs scans.*
+
+--
+
 ### 5. AI-Generated Mitigation Strategies
-- Hide server version in HTTP headers using server config (e.g., `ServerTokens Prod` in Apache)
 - Scan and remove unused subdomains (e.g., `test.`, `admin.`)
-- Enforce HTTPS and disable outdated TLS versions in web server settings
+- Ensure platform headers like 'server: Vercel' are minimized or obfuscated via edge config or CDN settings
 - Add SPF, DKIM, DMARC records to protect email infrastructure
 - Consider using DNSSEC to improve DNS trustworthiness
 
