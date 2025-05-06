@@ -133,6 +133,7 @@ AI helped me throughout the process:
 ### 8. Screenshots
 _Added screenshots of the vulnerabilities being exploited and code being fixed._
 ```markdown
+![test!] (sqli_afterFix.PNG)
 ![sqli_screenshot](https://github.com/user-attachments/assets/2c3d7b23-99ac-49a0-8ac6-274671ade4af)
 ![sqli_afterFix](https://github.com/user-attachments/assets/c68a9230-a606-46a5-a836-a2b170bd24e1)
 ![xss_screenshot](https://github.com/user-attachments/assets/a54e5d35-3b3c-405d-b608-a146215aed33)
