@@ -3,8 +3,6 @@
 
 ## Exercise 1: Reconnaissance & OSINT (Open-Source Intelligence)
 
-**Target Domain:** rsplhealth.in
-
 ---
 
 ### 1. Objective
