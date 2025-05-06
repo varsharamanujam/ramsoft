@@ -1,3 +1,9 @@
+---
+# Offensive Security Intern – Round 2 Submission
+
+##Exercise 4: AI for Social Engineering Awareness
+
+---
 ### 1. Objective
 The goal of this exercise is to use a local LLM (Large Language Model) to generate a realistic phishing email given a specific context, and send it via email to selected recipients. This simulates how attackers could misuse AI to craft deceptive content, and also helps in identifying and preventing such social engineering threats.
 

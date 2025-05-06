@@ -1,4 +1,7 @@
+---
+# Offensive Security Intern – Round 2 Submission
 
+## Exercise 3: Automating a Security Task with AI & Scripting
 ---
 
 ### 1. Objective
