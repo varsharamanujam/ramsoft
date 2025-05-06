@@ -1,7 +1,7 @@
 ---
 # Offensive Security Intern – Round 2 Submission
 
-##Exercise 4: AI for Social Engineering Awareness
+## Exercise 4: AI for Social Engineering Awareness
 
 ---
 ### 1. Objective
