@@ -18,9 +18,6 @@ The goal of this exercise was to conduct an OSINT-based security assessment of t
   - `Shodan`: Public IP exposure and open service scanning
   - `theHarvester`: Gather emails, subdomains, hostnames
   - `WhatWeb` / `Wappalyzer`: Identify technologies in use
-
-Note: Tools were not executed directly; ChatGPT was used to simulate findings and explain expected outputs.
-
 ---
 
 ### 3. AI-Assisted Findings
